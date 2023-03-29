@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+
+        section:nth-child(1) {
+            display: flex;
+            justify-content: center;
+        }
+
+        section:nth-child(2) {
+            display: flex;
+            justify-content: center;
+            margin-top: 300px;
+        }
+
+        button {
+            width: 50vw;
+            height: 100px;
+            font-size: 3rem;
+        }
+
+        h1 {
+            width: 200px;
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <div class="group">
+                Group1
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+            </div>
+            <div class="group">
+                Group2
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+            </div>
+            <div class="group">
+                Group3
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+            </div>
+            <div class="group">
+                Group4
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+                <h1></h1>
+            </div>
+        </section>
+        <section>
+            <div>
+                <button onclick="fillNames(groups)">Assign Groups</button>
+            </div>
+        </section>
+    </main>
+
+
+    <script>
+
+
+        const students = ["Bob", "Mary", "Liz", "Ann", "Jhone", "Yoa", "Mek", "Kal", "Nine", "Dune", "Sid", "Jin", "Joe", "Lane"];
+        const totalStudents = students.length;
+        const maxGroupNum = 4;
+
+        let groups = {
+            group1: [],
+            group2: [],
+            group3: [],
+            group4: [],
+        };
+
+        function runThrough() {
+            return Math.floor(Math.random() * students.length);
+        }
+
+        function fillNames({group1, group2, group3, group4}) {
+            assignGroups();
+
+            for(let i = 0; i < group1.length; ++i) {
+                document.querySelectorAll(".group")[0].children[i].innerHTML = group1[i];
+            }
+
+            for(let i = 0; i < group2.length; ++i) {
+                document.querySelectorAll(".group")[1].children[i].innerHTML = group2[i];
+            }
+
+            for(let i = 0; i < group3.length; ++i) {
+                document.querySelectorAll(".group")[2].children[i].innerHTML = group3[i];
+            }
+
+            for(let i = 0; i < group4.length; ++i) {
+                document.querySelectorAll(".group")[3].children[i].innerHTML = group4[i];
+            }
+        }
+
+        function assignGroups() {
+            for(const key in groups) {
+                for(let i = 0; i < maxGroupNum; ++i) {
+                    if(students.length !== 0) {
+                        groups[key].push(students.splice(runThrough(), 1));
+                    }
+                }
+            }
+        }
+
+    </script>
+</body>
+</html>
